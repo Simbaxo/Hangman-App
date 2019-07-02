@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Hangman.css";
+import { randomWord } from "./words";
 import img0 from "./0.jpg";
 import img1 from "./1.jpg";
 import img2 from "./2.jpg";
@@ -60,7 +61,13 @@ class Hangman extends Component {
     return (
       <div className='Hangman'>
         <h1>Hangman</h1>
-        <img src={this.props.images[this.state.nWrong]} />
+        {
+          (this.state.nWrong === this.props.maxWrong) ?
+            'You Lose'
+            :
+            <img src={this.props.images[this.state.nWrong]} key={this.state.nWrong} alt={this.state.guessed} />
+        }
+        <h3>Number Wrong: {this.state.nWrong}</h3>
         <p className='Hangman-word'>{this.guessedWord()}</p>
         <p className='Hangman-btns'>{this.generateButtons()}</p>
       </div>
