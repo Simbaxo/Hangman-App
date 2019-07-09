@@ -85,6 +85,7 @@ class Hangman extends Component {
             ? this.generateButtons()
             : `You Lose!`}
         </p>
+        {this.guessedWord().join("") === this.state.answer &&   <p>You Win!</p>}
         <button id='reset' onClick={this.reset}>Restart?</button>
       </div>
     );
